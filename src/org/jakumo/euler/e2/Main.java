@@ -14,7 +14,7 @@ public class Main {
             j = i % 3;
             if (a[j] > 4000000) break;
             if (a[j] % 2 == 0) sum += a[j];
-            System.out.print(a[j] + " ");
+            //System.out.print(a[j] + " ");
             a[j] = a[(i + 1) % 3] + a[(i + 2) % 3];
         }
 
