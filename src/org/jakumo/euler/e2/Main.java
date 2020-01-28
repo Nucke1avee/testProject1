@@ -10,7 +10,7 @@ public class Main {
         int j;
         long sum = 0;
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             j = i % 3;
             if (a[j] > 4000000) break;
             if (a[j] % 2 == 0) sum += a[j];
