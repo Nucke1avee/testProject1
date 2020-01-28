@@ -6,9 +6,12 @@ public class Main {
         long num = 600851475143L;
         int maxDel = 0;
 
-
-
-
+        for (int i = 2; i <= num; i++) {
+            if ((num % i == 0) && isSimple(i)) {
+                num /= i;
+                maxDel = i;
+            }
+        }
         System.out.println("\nResult: " + maxDel);
     }
 
