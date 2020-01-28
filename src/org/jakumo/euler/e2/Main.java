@@ -7,14 +7,12 @@ package org.jakumo.euler.e2;
 public class Main {
     public static void main(String[] args) {
         int[] a = {1, 2, 3};
-        int j, sum = 0;
+        int sum = 0;
 
-        for (int i = 0; i < 50; i++) {
-            j = i % 3;
-            if (a[j] > 4000000) break;
-            if (a[j] % 2 == 0) sum += a[j];
-            System.out.print(a[j] + " ");
-            a[j] = a[(i + 1) % 3] + a[(i + 2) % 3];
+        for (int i = 0; a[i % 3] < 4000000; i++) {
+            if (a[i % 3] % 2 == 0) sum += a[i % 3];
+            System.out.print(a[i % 3] + " ");
+            a[i % 3] = a[(i + 1) % 3] + a[(i + 2) % 3];
         }
         System.out.println("\nResult: " + sum);
     }
