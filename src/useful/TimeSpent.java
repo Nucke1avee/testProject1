@@ -7,6 +7,6 @@ public class TimeSpent {
         //your code
 
         long timeSpent = System.currentTimeMillis() - startTime;
-        System.out.println("программа выполнялась " + timeSpent + " миллисекунд");
+        System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 }
