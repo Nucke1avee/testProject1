@@ -4,11 +4,12 @@ package org.jakumo.euler.e4;
       Найдите самый большой палиндром, полученный умножением двух трехзначных чисел.*/
 public class Main {
     public static void main(String[] args) {
+        //execution time ~35ms
         boolean isFound = false;
         int result = 0;
         for (int i = 999; i >= 100 || !isFound; i--) {
             for (int j = 999; j >= 100; j--) {
-                if (i * j > result && isPaly(i * j)) {
+                if (i * j > result && isPalindrome(i * j)) {
                     isFound = true;
                     result = i * j;
                     break;
@@ -16,10 +17,9 @@ public class Main {
             }
         }
         System.out.println("Result: " + result);
-        //execution time ~35ms
     }
 
-    private static boolean isPaly(int i) {
+    private static boolean isPalindrome(int i) {
         char[] s = Integer.toString(i).toCharArray();
         for (int j = 0, k = s.length - 1; j < s.length / 2; j++, k--) {
             if (s[j] != s[k]) return false;
