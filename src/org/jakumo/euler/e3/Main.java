@@ -3,7 +3,7 @@ package org.jakumo.euler.e3;
 //Каков самый большой делитель числа 600851475143, являющийся простым числом?
 public class Main {
     public static void main(String[] args) {
-        //execution time ~25ms
+        //execution time ~20ms
         long num = 600851475143L;
         int maxDel = 0;
 
@@ -17,10 +17,10 @@ public class Main {
     }
 
     private static boolean isSimple(int i) {
-        int count = 0;
-        for (int j = 1; j <= i; j++) {
+        for (int j = 1, count = 0; j <= Math.sqrt(i); j++) {
             if (i % j == 0) count++;
+            if (count > 1) return false;
         }
-        return count == 2;
+        return true;
     }
 }
