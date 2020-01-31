@@ -13,8 +13,6 @@ public class TestField {
         System.out.println(isSimple(183));
 
 
-
-
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
     }

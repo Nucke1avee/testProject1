@@ -4,8 +4,7 @@ package org.jakumo.euler.e7;
 public class Main {
     public static void main(String[] args) {
         //execution time ~50ms
-        int counter = 0;
-        int i;
+        int i, counter = 0;
         for (i = 2; counter != 10001; i++) {
             if (isSimple(i)) counter++;
         }
