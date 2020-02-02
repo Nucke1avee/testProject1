@@ -29,9 +29,10 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        //не закончено
         String fileName = "./src/org/jakumo/euler/e8/num.txt";
         int length = 0;
-        try (FileInputStream is = new FileInputStream(fileName)) {
+        try (FileInputStream is = new FileInputStream(fileName)) {  //поменять на file reader (читает посимвольно)
             while (is.read() != -1) length++;
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
