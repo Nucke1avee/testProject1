@@ -24,31 +24,46 @@ package org.jakumo.euler.e8;
 
         Найдите наибольшее произведение тринадцати последовательных цифр в данном числе.*/
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException { //лучше убрать, и сделать нормальный try/catch
         //не закончено
         String fileName = "./src/org/jakumo/euler/e8/num.txt";
-        int length = 0;
-        try (FileInputStream is = new FileInputStream(fileName)) {  //поменять на file reader (читает посимвольно)
+
+        String line;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+            char[] m = line.toCharArray();
+        }
+
+
+
+
+        /*int length = 0;
+        try (FileReader is = new FileReader(fileName)) {
             while (is.read() != -1) length++;
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         int[] num = new int[length];
-        try (FileInputStream is = new FileInputStream(fileName)) {
+
+        //что то тут не то...
+        try (FileReader is = new FileReader(fileName)) {
             for (int i = 0; i < num.length; i++) {
                 num[i] = is.read();
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-        }
+        }*/
 
-        for (int i : num) {
-            System.out.print(i);
+        /*for (int i : num) {
+            System.out.print(i+" ");
         }
+        System.out.println();
+        System.out.println(num.length);*/
 
 
     }
