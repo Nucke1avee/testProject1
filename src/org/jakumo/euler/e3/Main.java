@@ -18,9 +18,8 @@ public class Main {
 
     private static boolean isSimple(int i) {
         if (i < 2) return false;
-        for (int j = 1, count = 0; j <= Math.sqrt(i); j++) {
-            if (i % j == 0) count++;
-            if (count > 1) return false;
+        for (int j = 2; j <= Math.sqrt(i); j++) {
+            if (i % j == 0) return false;
         }
         return true;
     }
