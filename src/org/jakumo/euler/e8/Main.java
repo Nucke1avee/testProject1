@@ -28,43 +28,30 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws IOException { //лучше убрать, и сделать нормальный try/catch
-        //не закончено
+        //execution time ~30ms
+        int amount = 13; //произведение скольких чисел нас интересует
+        //получаем массив чисел из файла
         String fileName = "./src/org/jakumo/euler/e8/num.txt";
-
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-
+        int[] num = new int[0];
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             char[] m = line.toCharArray();
-        }
-
-
-
-
-        /*int length = 0;
-        try (FileReader is = new FileReader(fileName)) {
-            while (is.read() != -1) length++;
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        int[] num = new int[length];
-
-        //что то тут не то...
-        try (FileReader is = new FileReader(fileName)) {
-            for (int i = 0; i < num.length; i++) {
-                num[i] = is.read();
+            num = new int[m.length];
+            for (int i = 0; i < m.length; i++) {
+                num[i] = Character.getNumericValue(m[i]);
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-
-        /*for (int i : num) {
-            System.out.print(i+" ");
         }
-        System.out.println();
-        System.out.println(num.length);*/
-
-
+        //собстна, логика (если тут вообще есть что можно назвать оной)
+        long maxMult = 0, tempMult = 1L;
+        for (int i = 0; i < num.length - amount; i++) {
+            for (int j = i; j < i + amount; j++) {
+                if (num[j] == 0) break;
+                tempMult *= num[j];
+            }
+            if (tempMult > maxMult) maxMult = tempMult;
+            tempMult = 1L;
+        }
+        System.out.println("Result is: " + maxMult);
     }
 }
