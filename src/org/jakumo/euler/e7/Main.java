@@ -6,12 +6,12 @@ public class Main {
         //execution time ~50ms
         int i, counter = 0;
         for (i = 2; counter != 10001; i++) {
-            if (isSimple(i)) counter++;
+            if (isPrime(i)) counter++;
         }
         System.out.println("Result: " + (i - 1));
     }
-
-    private static boolean isSimple(int i) {
+    //true - число простое, false - нет
+    private static boolean isPrime(int i) {
         if (i < 2) return false;
         for (int j = 2; j <= Math.sqrt(i); j++) {
             if (i % j == 0) return false;

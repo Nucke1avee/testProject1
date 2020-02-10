@@ -18,7 +18,7 @@ public class Main {
         }
         System.out.println("Result: " + result);
     }
-
+    //разбиваем на массив чаров и циклом сравниваем 1й символ с последним (двигаясь от краев к центру)
     private static boolean isPalindrome(int i) {
         char[] s = Integer.toString(i).toCharArray();
         for (int j = 0, k = s.length - 1; j < s.length / 2; j++, k--) {

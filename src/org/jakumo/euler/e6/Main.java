@@ -11,8 +11,6 @@ public class Main {
         int sk = 0, ks = 0, n = 100;
         for (int i = 1; i <= n; i++) {
             sk += i * i;
-        }
-        for (int i = 1; i <= n; i++) {
             ks += i;
         }
         System.out.println("Result: " + (ks * ks - sk));

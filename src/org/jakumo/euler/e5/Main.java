@@ -7,7 +7,7 @@ public class Main {
         int to = 20;
         int nok = 1;
         for (int i = 2; i <= to; i++) {
-            if (isSimple(i)) nok *= i;
+            if (isPrime(i)) nok *= i;
         }
 
         for (int i = nok;; i += nok) {
@@ -26,7 +26,7 @@ public class Main {
             }
         }
     }
-    private static boolean isSimple(int i) {
+    private static boolean isPrime(int i) {
         if (i < 2) return false;
         for (int j = 1, count = 0; j <= Math.sqrt(i); j++) {
             if (i % j == 0) count++;
