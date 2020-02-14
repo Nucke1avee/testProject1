@@ -28,13 +28,48 @@ package org.jakumo.euler.e011;
         Каково наибольшее произведение четырех подряд идущих чисел в таблице 20×20,
         расположенных в любом направлении (вверх, вниз, вправо, влево или по диагонали)?*/
 
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
         //your code
+        String path = "./src/org/jakumo/euler/e011/array.txt";
+        int[][] array = getArrayFromFile(path);
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
+    }
+
+
+
+    public static int[][] getArrayFromFile(String path) {
+        int[][] array;
+        try {
+            DataInputStream in = new DataInputStream(new FileInputStream(path));
+
+            array = new int[in.readInt()][in.readInt()];
+            for (int[] args : array) {
+                for (int j = 0; j < args.length; j++) {
+                    args[j] = in.readInt();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

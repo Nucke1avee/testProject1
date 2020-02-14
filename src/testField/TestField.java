@@ -5,12 +5,10 @@ public class TestField {
         long startTime = System.currentTimeMillis();
 
 
-        System.out.println(isSimple(101));
-        System.out.println(isSimple(11));
-        System.out.println(isSimple(356));
-        System.out.println(isSimple(19));
-        System.out.println(isSimple(33333));
-        System.out.println(isSimple(183));
+        String a ="0000001";
+        System.out.println(a);
+        int b = Integer.parseInt(a);
+        System.out.println(b);
 
 
         long timeSpent = System.currentTimeMillis() - startTime;

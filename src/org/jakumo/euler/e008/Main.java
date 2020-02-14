@@ -31,7 +31,7 @@ public class Main {
         //execution time ~30ms
         int amount = 13; //произведение скольких чисел нас интересует
         //получаем массив чисел из файла
-        String fileName = "./src/org/jakumo/euler/e8/num.txt";
+        String fileName = "./src/org/jakumo/euler/e008/num.txt";
         String line;
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
         int[] num = new int[0];
