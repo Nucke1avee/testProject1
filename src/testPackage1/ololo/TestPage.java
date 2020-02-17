@@ -1,6 +1,7 @@
 package testPackage1.ololo;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -25,8 +26,26 @@ public class TestPage {
         page.startFrom("https://www.wikipedia.org/");
         page.searchSomething();
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         page.startFrom("https://www.wikipedia.org/");
         page.searchSomething("linus torvalds");
+
+        String actURL = driver.getCurrentUrl();
+        String expURL = "https://en.wikipedia.org/wiki/File:LinuxCon_Europe_Linus_Torvalds_03_(cropped).jpg";
+        Assert.assertEquals(expURL, actURL);
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @After
