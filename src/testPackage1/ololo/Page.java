@@ -36,7 +36,6 @@ public class Page {
         driver.findElement(searchField).sendKeys(something);
         driver.findElement(searchButton).click();
         driver.findElement(linusImage).click();
-
     }
 
     public void startFrom(String startPage) {

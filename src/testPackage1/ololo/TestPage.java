@@ -44,8 +44,6 @@ public class TestPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @After
