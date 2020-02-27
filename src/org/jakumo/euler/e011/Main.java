@@ -54,11 +54,9 @@ public class Main {
     }
 
 
-
     public static int[][] getArrayFromFile(String path) {
         int[][] array;
-        try {
-            DataInputStream in = new DataInputStream(new FileInputStream(path));
+        try (DataInputStream in = new DataInputStream(new FileInputStream(path))) {
 
             array = new int[in.readInt()][in.readInt()];
             for (int[] args : array) {
