@@ -73,6 +73,9 @@ public class Main {
         }
 
         //TODO перевести String[][] -> int[][]
+        for (int i = 0, j = 0; i < stringArray.length && j < stringArray.length; i++, j++) {
+            //int[i][j] =
+        }
 
 
         return intArray;
