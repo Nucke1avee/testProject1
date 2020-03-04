@@ -28,18 +28,19 @@ package org.jakumo.euler.e011;
         Каково наибольшее произведение четырех подряд идущих чисел в таблице 20×20,
         расположенных в любом направлении (вверх, вниз, вправо, влево или по диагонали)?*/
 
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         long startTime = System.currentTimeMillis();
+        //execTime =
 
-        //your code
         String path = "./src/org/jakumo/euler/e011/array.txt";
         int[][] array = getArrayFromFile(path);
+        int max = 1;
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -48,26 +49,32 @@ public class Main {
             System.out.println();
         }
 
+        //тут логика ннада...
+
+        System.out.println("Result = " + max);
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 
 
-    public static int[][] getArrayFromFile(String path) {
-        int[][] array;
-        try (DataInputStream in = new DataInputStream(new FileInputStream(path))) {
+    public static int[][] getArrayFromFile(String path) throws IOException {
+        String[][] stringArray = new String[20][20];
+        int[][] intArray = new int[20][20];
 
-            array = new int[in.readInt()][in.readInt()];
-            for (int[] args : array) {
-                for (int j = 0; j < args.length; j++) {
-                    args[j] = in.readInt();
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        int counter = 0;
+        String line;
+        Scanner scanner = new Scanner(new File(path));
+        while (scanner.hasNext()) {
+            line = scanner.nextLine();
+            System.out.println("line = " + line);
+            stringArray[counter] = line.split(" ");
+            counter++;
         }
-        return null;
+
+        //TODO перевести String[][] -> int[][]
+
+
+        return intArray;
     }
 }
