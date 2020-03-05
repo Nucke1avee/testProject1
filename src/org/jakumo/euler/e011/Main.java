@@ -30,8 +30,7 @@ package org.jakumo.euler.e011;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -39,45 +38,47 @@ public class Main {
         //execTime =
 
         String path = "./src/org/jakumo/euler/e011/array.txt";
-        int[][] array = getArrayFromFile(path);
-        int max = 1;
+        int[][] array = getMatrixFromFile(path, " ");
 
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[i][j] + "\t");
+        for (int[] ints : array) {
+            for (int anInt : ints) {
+                System.out.print(anInt + "\t");
             }
             System.out.println();
         }
 
-        //тут логика ннада...
-
-        System.out.println("Result = " + max);
+        System.out.println("\nResult = " + getMaxMultiplicationFromArray(array, 4));
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 
 
-    public static int[][] getArrayFromFile(String path) throws IOException {
-        String[][] stringArray = new String[20][20];
-        int[][] intArray = new int[20][20];
+    private static int getMaxMultiplicationFromArray(int[][] array, int amountOfMultiplicands) {
+        int maxMultiplication = 1;
+        int[] whichNumbersMakesMax = new int[amountOfMultiplicands];
 
-        int counter = 0;
-        String line;
-        Scanner scanner = new Scanner(new File(path));
-        while (scanner.hasNext()) {
-            line = scanner.nextLine();
-            System.out.println("line = " + line);
-            stringArray[counter] = line.split(" ");
-            counter++;
+        //TODO
+
+        return maxMultiplication;
+    }
+
+    private static int[][] getMatrixFromFile(String path, String delimiter) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+
+        List<String> lines = new ArrayList<>();
+        while (bufferedReader.ready()) lines.add(bufferedReader.readLine());
+
+        int matrixWidth = lines.get(0).split(delimiter).length;
+        int matrixHeight = lines.size();
+        int[][] matrix = new int[matrixHeight][matrixWidth];
+
+        for (int i = 0; i < matrixHeight; i++) {
+            for (int j = 0; j < matrixWidth; j++) {
+                String[] line = lines.get(i).split(delimiter);
+                matrix[i][j] = Integer.parseInt(line[j]);
+            }
         }
-
-        //TODO перевести String[][] -> int[][]
-        for (int i = 0, j = 0; i < stringArray.length && j < stringArray.length; i++, j++) {
-            //int[i][j] =
-        }
-
-
-        return intArray;
+        return matrix;
     }
 }
