@@ -30,6 +30,7 @@ package org.jakumo.euler.e011;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -58,10 +59,12 @@ public class Main {
         int maxMultiplication = 1;
         int[] whichNumbersMakesMax = new int[amountOfMultiplicands];
 
-        //TODO
 
+
+        System.out.println("\n" + Arrays.toString(whichNumbersMakesMax));
         return maxMultiplication;
     }
+
 
     private static int[][] getMatrixFromFile(String path, String delimiter) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
