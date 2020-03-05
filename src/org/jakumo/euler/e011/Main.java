@@ -76,8 +76,22 @@ public class Main {
             }
         }
 
-        //по вертикали
-
+        //по вертикали  66 91 88 97
+        for (int i = 0; i < array[0].length; i++) {
+            for (int j = 0; j <= array.length - amountOfMultiplicands; j++) {
+                tmpMultiplication = 1;
+                for (int k = j; k < j + amountOfMultiplicands; k++) {
+                    tmpMultiplication *= array[k][i];
+                    tmpWhichNumbersMakesMax.add(array[k][i]);
+                }
+                if (tmpMultiplication > maxMultiplication) {
+                    maxMultiplication = tmpMultiplication;
+                    whichNumbersMakesMax.clear();
+                    whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                }
+                tmpWhichNumbersMakesMax.clear();
+            }
+        }
 
 
 
