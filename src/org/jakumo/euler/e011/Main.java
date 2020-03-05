@@ -38,7 +38,8 @@ public class Main {
         //execTime =
 
         String path = "./src/org/jakumo/euler/e011/array.txt";
-        int[][] array = getMatrixFromFile(path, " ");
+        String pathTest = "./src/org/jakumo/euler/e011/testArray.txt";
+        int[][] array = getMatrixFromFile(pathTest, " ");
 
         for (int[] ints : array) {
             for (int anInt : ints) {
@@ -58,7 +59,9 @@ public class Main {
         int maxMultiplication = 1, tmpMultiplication;
         List<Integer> whichNumbersMakesMax = new ArrayList<>();
         List<Integer> tmpWhichNumbersMakesMax = new ArrayList<>();
+/*
 
+        //тут все ок, проверено
         //по горизонтали  78 78 96 83
         for (int i = 0; i < array[0].length; i++) {
             for (int j = 0; j <= array.length - amountOfMultiplicands; j++) {
@@ -92,11 +95,25 @@ public class Main {
                 tmpWhichNumbersMakesMax.clear();
             }
         }
+*/
 
-
-
+        //а вот тут жопа
         //диагональ +
-
+        for (int i = 0; i < array[0].length - amountOfMultiplicands; i++) {
+            for (int j = 0; j < array.length - amountOfMultiplicands; j++) {
+                tmpMultiplication = 1;
+                for (int k = i, l = j; k < amountOfMultiplicands; k++, l++) {
+                    tmpMultiplication *= array[k][l];
+                    tmpWhichNumbersMakesMax.add(array[k][l]);
+                }
+                if (tmpMultiplication > maxMultiplication) {
+                    maxMultiplication = tmpMultiplication;
+                    whichNumbersMakesMax.clear();
+                    whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                }
+                tmpWhichNumbersMakesMax.clear();
+            }
+        }
 
 
 
