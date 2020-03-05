@@ -30,7 +30,6 @@ package org.jakumo.euler.e011;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -56,12 +55,44 @@ public class Main {
 
 
     private static int getMaxMultiplicationFromArray(int[][] array, int amountOfMultiplicands) {
-        int maxMultiplication = 1;
-        int[] whichNumbersMakesMax = new int[amountOfMultiplicands];
+        int maxMultiplication = 1, tmpMultiplication;
+        List<Integer> whichNumbersMakesMax = new ArrayList<>();
+        List<Integer> tmpWhichNumbersMakesMax = new ArrayList<>();
+
+        //по горизонтали  78 78 96 83
+        for (int i = 0; i < array[0].length; i++) {
+            for (int j = 0; j <= array.length - amountOfMultiplicands; j++) {
+                tmpMultiplication = 1;
+                for (int k = j; k < j + amountOfMultiplicands; k++) {
+                    tmpMultiplication *= array[i][k];
+                    tmpWhichNumbersMakesMax.add(array[i][k]);
+                }
+                if (tmpMultiplication > maxMultiplication) {
+                    maxMultiplication = tmpMultiplication;
+                    whichNumbersMakesMax.clear();
+                    whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                }
+                tmpWhichNumbersMakesMax.clear();
+            }
+        }
+
+        //по вертикали
 
 
 
-        System.out.println("\n" + Arrays.toString(whichNumbersMakesMax));
+
+        //диагональ +
+
+
+
+
+        //диагональ -
+
+
+
+
+
+        System.out.println("\n" + whichNumbersMakesMax);
         return maxMultiplication;
     }
 
