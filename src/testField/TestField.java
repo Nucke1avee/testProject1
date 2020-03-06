@@ -20,30 +20,20 @@ public class TestField {
         int maxLengthPosition = 0;
         int minLengthPosition = 0;
 
-
-
         for (int i = 0; i < list.size(); i++) {
-
-
             if (list.get(i).length() > maxLength) {
                 maxLength = list.get(i).length();
                 maxLengthPosition = i;
             }
-
-
-
             if (list.get(i).length() < minLength) {
                 minLength = list.get(i).length();
                 minLengthPosition = i;
             }
         }
-
-
-
         if (maxLengthPosition < minLengthPosition) {
-            System.out.println(maxLengthPosition);
+            System.out.println(list.get(maxLengthPosition));
         } else {
-            System.out.println(minLengthPosition);
+            System.out.println(list.get(minLengthPosition);
         }
     }
 }
