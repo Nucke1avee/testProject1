@@ -34,24 +34,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        long startTime = System.currentTimeMillis();
-        //execTime =
-
+        //execTime ~ 78ms
         String path = "./src/org/jakumo/euler/e011/array.txt";
         String pathTest = "./src/org/jakumo/euler/e011/testArray.txt";
-        int[][] array = getMatrixFromFile(pathTest, " ");
-
-        for (int[] ints : array) {
-            for (int anInt : ints) {
-                System.out.print(anInt + "\t");
-            }
-            System.out.println();
-        }
-
+        int[][] array = getMatrixFromFile(path, " ");
         System.out.println("\nResult = " + getMaxMultiplicationFromArray(array, 4));
-
-        long timeSpent = System.currentTimeMillis() - startTime;
-        System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 
 
@@ -59,14 +46,13 @@ public class Main {
         int maxMultiplication = 1, tmpMultiplication;
         List<Integer> whichNumbersMakesMax = new ArrayList<>();
         List<Integer> tmpWhichNumbersMakesMax = new ArrayList<>();
-/*
+        String how = "";
 
-        //тут все ок, проверено
         //по горизонтали  78 78 96 83
-        for (int i = 0; i < array[0].length; i++) {
-            for (int j = 0; j <= array.length - amountOfMultiplicands; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j <= array[0].length - amountOfMultiplicands; j++) {
                 tmpMultiplication = 1;
-                for (int k = j; k < j + amountOfMultiplicands; k++) {
+                for (int m = 0, k = j; m < amountOfMultiplicands; k++, m++) {
                     tmpMultiplication *= array[i][k];
                     tmpWhichNumbersMakesMax.add(array[i][k]);
                 }
@@ -74,16 +60,16 @@ public class Main {
                     maxMultiplication = tmpMultiplication;
                     whichNumbersMakesMax.clear();
                     whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                    how = "--";
                 }
                 tmpWhichNumbersMakesMax.clear();
             }
         }
-
         //по вертикали  66 91 88 97
         for (int i = 0; i < array[0].length; i++) {
             for (int j = 0; j <= array.length - amountOfMultiplicands; j++) {
                 tmpMultiplication = 1;
-                for (int k = j; k < j + amountOfMultiplicands; k++) {
+                for (int m = 0, k = j; m < amountOfMultiplicands; k++, m++) {
                     tmpMultiplication *= array[k][i];
                     tmpWhichNumbersMakesMax.add(array[k][i]);
                 }
@@ -91,18 +77,16 @@ public class Main {
                     maxMultiplication = tmpMultiplication;
                     whichNumbersMakesMax.clear();
                     whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                    how = "|";
                 }
                 tmpWhichNumbersMakesMax.clear();
             }
         }
-*/
-
-        //а вот тут жопа
         //диагональ +
-        for (int i = 0; i < array[0].length - amountOfMultiplicands; i++) {
-            for (int j = 0; j < array.length - amountOfMultiplicands; j++) {
+        for (int i = 0; i <= array.length - amountOfMultiplicands; i++) {
+            for (int j = 0; j <= array[0].length - amountOfMultiplicands; j++) {
                 tmpMultiplication = 1;
-                for (int k = i, l = j; k < amountOfMultiplicands; k++, l++) {
+                for (int m = 0, k = i, l = j; m < amountOfMultiplicands; k++, l++, m++) {
                     tmpMultiplication *= array[k][l];
                     tmpWhichNumbersMakesMax.add(array[k][l]);
                 }
@@ -110,20 +94,29 @@ public class Main {
                     maxMultiplication = tmpMultiplication;
                     whichNumbersMakesMax.clear();
                     whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                    how = "\\";
                 }
                 tmpWhichNumbersMakesMax.clear();
             }
         }
-
-
-
         //диагональ -
-
-
-
-
-
-        System.out.println("\n" + whichNumbersMakesMax);
+        for (int i = amountOfMultiplicands - 1; i < array.length; i++) {
+            for (int j = 0; j <= array[0].length - amountOfMultiplicands; j++) {
+                tmpMultiplication = 1;
+                for (int m = 0, k = i, l = j; m < amountOfMultiplicands; k--, l++, m++) {
+                    tmpMultiplication *= array[k][l];
+                    tmpWhichNumbersMakesMax.add(array[k][l]);
+                }
+                if (tmpMultiplication > maxMultiplication) {
+                    maxMultiplication = tmpMultiplication;
+                    whichNumbersMakesMax.clear();
+                    whichNumbersMakesMax.addAll(tmpWhichNumbersMakesMax);
+                    how = "/";
+                }
+                tmpWhichNumbersMakesMax.clear();
+            }
+        }
+        System.out.println("\n" + how + " " + whichNumbersMakesMax);
         return maxMultiplication;
     }
 
@@ -133,6 +126,7 @@ public class Main {
 
         List<String> lines = new ArrayList<>();
         while (bufferedReader.ready()) lines.add(bufferedReader.readLine());
+        bufferedReader.close();
 
         int matrixWidth = lines.get(0).split(delimiter).length;
         int matrixHeight = lines.size();
