@@ -40,7 +40,6 @@ public class Main {
         System.out.println("\nResult = " + getMaxMultiplicationFromArray(array, 4));
     }
 
-
     private static int getMaxMultiplicationFromArray(int[][] array, int amountOfMultiplicands) {
         int maxMultiplication = 1, tmpMultiplication;
         List<Integer> whichNumbersMakesMax = new ArrayList<>();
@@ -118,7 +117,6 @@ public class Main {
         System.out.println("\n" + how + " " + whichNumbersMakesMax);
         return maxMultiplication;
     }
-
 
     private static int[][] getMatrixFromFile(String path, String delimiter) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
