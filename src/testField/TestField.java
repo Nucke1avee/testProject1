@@ -33,7 +33,7 @@ public class TestField {
         if (maxLengthPosition < minLengthPosition) {
             System.out.println(list.get(maxLengthPosition));
         } else {
-            System.out.println(list.get(minLengthPosition);
+            System.out.println(list.get(minLengthPosition));
         }
     }
 }
