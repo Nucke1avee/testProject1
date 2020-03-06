@@ -1,30 +1,49 @@
 package testField;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestField {
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+    public static void main(String[] args) throws Throwable {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<String> list = new ArrayList<>();
 
-
-        String a ="0000001";
-        System.out.println(a);
-        int b = Integer.parseInt(a);
-        System.out.println(b);
-
-
-        long timeSpent = System.currentTimeMillis() - startTime;
-        System.out.println("\nExecution time: " + timeSpent + " ms");
-    }
-
-
-    private static boolean isSimple(int i) {
-        if (i < 2) return false;
-        for (int j = 1, count = 0; j <= Math.sqrt(i); j++) {
-            if (i % j == 0) count++;
-            if (count > 1) return false;
+        for (int i = 0; i < 10; i++) {
+            list.add(reader.readLine());
         }
-        return true;
+        reader.close();
+
+        int maxLength = list.get(0).length();
+        int minLength = list.get(0).length();
+        int maxLengthPosition = 0;
+        int minLengthPosition = 0;
+
+
+
+        for (int i = 0; i < list.size(); i++) {
+
+
+            if (list.get(i).length() > maxLength) {
+                maxLength = list.get(i).length();
+                maxLengthPosition = i;
+            }
+
+
+
+            if (list.get(i).length() < minLength) {
+                minLength = list.get(i).length();
+                minLengthPosition = i;
+            }
+        }
+
+
+
+        if (maxLengthPosition < minLengthPosition) {
+            System.out.println(maxLengthPosition);
+        } else {
+            System.out.println(minLengthPosition);
+        }
     }
-
-
-
 }
