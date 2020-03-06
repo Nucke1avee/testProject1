@@ -36,7 +36,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //execTime ~ 78ms
         String path = "./src/org/jakumo/euler/e011/array.txt";
-        String pathTest = "./src/org/jakumo/euler/e011/testArray.txt";
         int[][] array = getMatrixFromFile(path, " ");
         System.out.println("\nResult = " + getMaxMultiplicationFromArray(array, 4));
     }
