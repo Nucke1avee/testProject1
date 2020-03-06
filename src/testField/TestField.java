@@ -19,6 +19,7 @@ public class TestField {
         int minLength = list.get(0).length();
         int maxLengthPosition = 0;
         int minLengthPosition = 0;
+        //нафиг лишние переменные =)
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).length() > maxLength) {
@@ -31,9 +32,9 @@ public class TestField {
             }
         }
         if (maxLengthPosition < minLengthPosition) {
-            System.out.println(list.get(maxLengthPosition));
+            System.out.println(list.get(maxLengthPosition)); //тут тянем просто строку из листа с нужным нам индексом
         } else {
-            System.out.println(list.get(minLengthPosition));
+            System.out.println(list.get(minLengthPosition)); //ну и тут, соответственно
         }
     }
 }
