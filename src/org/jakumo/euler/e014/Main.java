@@ -14,18 +14,12 @@ package org.jakumo.euler.e014;
 //
 //        Примечание: Следующие за первым элементы последовательности могут быть больше миллиона.
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        //Execution time =
-        //java.lang.OutOfMemoryError: Java heap space
-        //но до 100000 работаеет отлично
+        //Execution time = очень  долго... но работает. надо переделать
 
-        int maxStartNum = getMaxStaringNum(1000000);
-        System.out.println("Result: " + maxStartNum);
-        System.out.println("The sequence is: " + getSequence(maxStartNum));
+        System.out.println("Result: " + getMaxStaringNum(1000000));
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
@@ -34,7 +28,7 @@ public class Main {
     private static int getMaxStaringNum(int to) {
         int maxNum = 0, maxSeqSize = 0;
         for (int i = 1; i <= to; i++) {
-            int sequenceSize = getSequence(i).size();
+            int sequenceSize = getCollatzSequenceLength(i);
             if (sequenceSize > maxSeqSize) {
                 maxNum = i;
                 maxSeqSize = sequenceSize;
@@ -43,16 +37,18 @@ public class Main {
         return maxNum;
     }
 
-    private static ArrayList<Integer> getSequence(int startingNumber) {
-        ArrayList<Integer> collatzSequence = new ArrayList<>();
-        collatzSequence.add(startingNumber);
-        int collatzLastElem = collatzSequence.get(collatzSequence.size() - 1);
-        while (!(collatzLastElem == 1)) {
-            if (isEven(collatzLastElem)) collatzSequence.add(collatzLastElem / 2);
-            else collatzSequence.add(collatzLastElem * 3 + 1);
-            collatzLastElem = collatzSequence.get(collatzSequence.size() - 1);
+    private static int getCollatzSequenceLength(int startingNumber) {
+        int curLength = 0;
+        int curNumber = startingNumber;
+        while (!(curNumber == 1)) {
+            if (isEven(curNumber)) {
+                curNumber = curNumber / 2;
+            } else {
+                curNumber = curNumber * 3 + 1;
+            }
+            curLength++;
         }
-        return collatzSequence;
+        return curLength;
     }
 
     private static boolean isEven(int num) {
