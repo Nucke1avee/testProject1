@@ -3,37 +3,32 @@ package testField;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestField {
     public static void main(String[] args) throws Throwable {
+        //arraylist заполнение = 1200
+        //linkedlist заполнение = 1800
+        //arraylist вставка в начало = не справился
+        //      16000ms при в 100 раз меньше значений
+        //      11000ms вставка в середину (1/4)
+        //linkedlist вставка в середину = 2600
+
+
+        List<Integer> list = new LinkedList<>();
+        for (int i = 0; i < 100000; i++) {
+            list.add(i);
+        }
         long startTime = System.currentTimeMillis();
 
-        int orderNumber = 999999;
-//        long result = getTriangleNumberByOrder(orderNumber);
-        long result = getNextTriangleNumber();
-        System.out.println(result);
+        for (int i = 0; i < 100000; i++) {
+            list.get(i);
+        }
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
 
 
-    }
-
-
-
-    private static long getTriangleNumberByOrder(int orderNumber) {
-        long triangleNumber = 0;
-        for (int i = 0; i <= orderNumber; i++) {
-            triangleNumber += i;
-        }
-        return triangleNumber;
-    }
-
-    private static long trNum = 99999494645616165L;
-    private static long trNumCounter = 15195951951616L;
-
-    private static long getNextTriangleNumber() {
-        return trNum += ++trNumCounter;
     }
 }
