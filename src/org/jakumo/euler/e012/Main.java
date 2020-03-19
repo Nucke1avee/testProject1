@@ -22,29 +22,33 @@ public class Main {
         long startTime = System.currentTimeMillis();
         //Execution time =
         //работает, но ооооооооооооооооочень долго. Надо переделывать
-        System.out.println("Result: " + getFirstTriangleNumberWithThisAmountOfDivisors(300));
+//        number: 76576500 aod: 576
+//        Result: 76576500
+//        Execution time: 689511 ms
+        //"ну нахуй... буду проституткой"  (в смысле потом когда нибудь решу. может быть...)
+
+        System.out.println("Result: " + getFirstTriangleNumberWithThisAmountOfDivisors(500));
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 
     private static long getFirstTriangleNumberWithThisAmountOfDivisors(int amountOfDivisorsYouNeed) {
-        int amountOfDivisors, justCounter = 0;
+        int amountOfDivisors;
         long number;
         while (true) {
-            number = getTriangleNumberByOrder(justCounter);
+            number = getNextTriangleNumber();
+            if (number % 2 != 0 || number % 5 != 0) continue;
             amountOfDivisors = amountOfDivisors(number);
+            //System.out.println("number: " + number + " aod: " + amountOfDivisors);//
             if (amountOfDivisors >= amountOfDivisorsYouNeed) return number;
-            justCounter++;
         }
     }
 
-    private static long getTriangleNumberByOrder(int orderNumber) {
-        long triangleNumber = 0;
-        for (int i = 0; i <= orderNumber; i++) {
-            triangleNumber += i;
-        }
-        return triangleNumber;
+    private static long trNum = 1, trNumCounter = 1;
+
+    private static long getNextTriangleNumber() {
+        return trNum += ++trNumCounter;
     }
 
     private static int amountOfDivisors(long number) {
