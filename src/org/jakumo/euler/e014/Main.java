@@ -16,13 +16,8 @@ package org.jakumo.euler.e014;
 
 public class Main {
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-        //Execution time = очень  долго... но работает. надо переделать
-
+        //Execution time = 650ms
         System.out.println("Result: " + getMaxStaringNum(1000000));
-
-        long timeSpent = System.currentTimeMillis() - startTime;
-        System.out.println("\nExecution time: " + timeSpent + " ms");
     }
 
     private static int getMaxStaringNum(int to) {
@@ -39,7 +34,7 @@ public class Main {
 
     private static int getCollatzSequenceLength(int startingNumber) {
         int curLength = 0;
-        int curNumber = startingNumber;
+        long curNumber = startingNumber;
         while (!(curNumber == 1)) {
             if (isEven(curNumber)) {
                 curNumber = curNumber / 2;
@@ -51,7 +46,7 @@ public class Main {
         return curLength;
     }
 
-    private static boolean isEven(int num) {
+    private static boolean isEven(long num) {
         return num % 2 == 0;
     }
 }
