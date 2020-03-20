@@ -14,40 +14,44 @@ import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
-        //Execution time = 480ms
+        long startTime = System.currentTimeMillis();
+        //Execution time = 45s
+
         System.out.println("Result: " + getAmountOfPaths(21, 21) + " paths");
+
+        System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
     private static int getAmountOfPaths(int cols, int rows) {
         HashSet<String> hs = new HashSet<>();
-        int cursor;
-        int iterationsAmount = cols * rows * (cols + rows);
-        int maxCursor = cols + rows * 10;
+        int cursorX;
+        int cursorY;
         String path;
 
-        for (int i = 0; i < iterationsAmount; i++) {
-            cursor = 11;
-            path = "path_";
+        int iterationsAmount = cols * rows * cols * rows * 16;
+        //TODO: отсечку по времени бы вкрячить неплохо было б...
 
-            while (cursor < maxCursor) {
+        for (int i = 0; i < iterationsAmount; i++) {
+            cursorX = 1;
+            cursorY = 1;
+            path = "path = ";
+            while (cursorX < cols || cursorY < rows) {
                 if (Math.random() > 0.5) {
-                    if (cursor % 10 < cols) { //есть еще место справа?
-                        cursor += 1; //идем направо
-                        path = path.concat(cursor + "");
+                    if (cursorX < cols) { //есть еще место справа?
+                        cursorX += 1; //идем направо
                     } else { //места нет, идем до упора вниз
-                        cursor += 10;
-                        path = path.concat(cursor + "");
+                        cursorY += 1;
                     }
                 } else {
-                    if (cursor / 10 < rows) { //есть еще место внизу?
-                        cursor += 10; //идем вниз
-                        path = path.concat(cursor + "");
+                    if (cursorY < rows) { //есть еще место внизу?
+                        cursorY += 1; //идем вниз
                     } else { //места нет, идем до упора вправо
-                        cursor += 1;
-                        path = path.concat(cursor + "");
+                        cursorX += 1;
                     }
                 }
+                path = path.concat(cursorX + "." + cursorY + " ");
             }
+            System.out.println(path);
             hs.add(path);
         }
         return hs.size();
