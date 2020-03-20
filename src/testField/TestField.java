@@ -15,16 +15,13 @@ public class TestField {
         //      11000ms вставка в середину (1/4)
         //linkedlist вставка в середину = 2600
 
-
-        List<Integer> list = new LinkedList<>();
-        for (int i = 0; i < 100000; i++) {
-            list.add(i);
-        }
         long startTime = System.currentTimeMillis();
 
-        for (int i = 0; i < 100000; i++) {
-            list.get(i);
+
+        for (int i = 0; i < 100; i++) {
+            System.out.println(Math.random() > 0.5);
         }
+
 
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("\nExecution time: " + timeSpent + " ms");
