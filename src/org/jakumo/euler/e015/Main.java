@@ -18,6 +18,8 @@ public class Main {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
         //Execution time = 45s
+        //корректный ответ - 137846528820
+        //не соответствует - нужно переделать. на небольших матрицах работает гуд, с большими все плохо...
 
         System.out.println("Result: " + getAmountOfPaths(21, 21) + " paths");
 
@@ -67,8 +69,4 @@ public class Main {
         }
         return hs.size();
     }
-}
-
-class MyTask {
-
 }
