@@ -11,6 +11,8 @@ package org.jakumo.euler.e015;
 //        Сколько существует таких маршрутов в сетке 20×20 (21x21)?
 
 import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,10 +30,19 @@ public class Main {
         int cursorY;
         String path;
 
-        int iterationsAmount = cols * rows * cols * rows * 16;
-        //TODO: отсечку по времени бы вкрячить неплохо было б...
+        final boolean[] hasTime = {true};
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                hasTime[0] = false;
+            }
+        };
+        timer.schedule(task, 60000);
 
-        for (int i = 0; i < iterationsAmount; i++) {
+        int iterationsAmount = cols * rows * cols * rows * (cols + rows) / 2;
+
+        for (int i = 0; i < iterationsAmount && hasTime[0]; i++) {
             cursorX = 1;
             cursorY = 1;
             path = "path = ";
@@ -56,4 +67,8 @@ public class Main {
         }
         return hs.size();
     }
+}
+
+class MyTask {
+
 }
