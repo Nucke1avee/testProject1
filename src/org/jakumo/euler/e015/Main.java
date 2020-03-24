@@ -17,11 +17,11 @@ import java.util.TimerTask;
 public class Main {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        //Execution time = 45s
+        //Execution time =
         //корректный ответ - 137846528820
         //не соответствует - нужно переделать. на небольших матрицах работает гуд, с большими все плохо...
 
-        System.out.println("Result: " + getAmountOfPaths(21, 21) + " paths");
+        System.out.println("Result: " + getAmountOfPaths(5, 5) + " paths");
 
         System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
     }
@@ -32,12 +32,14 @@ public class Main {
         int cursorY;
         String path;
 
+        //таймер для прерывания основного потока. но что-то он мне не нравится...
         final boolean[] hasTime = {true};
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 hasTime[0] = false;
+                System.out.println("Time is over...");
             }
         };
         timer.schedule(task, 60000);
