@@ -11,6 +11,7 @@ package org.jakumo.euler.e015;
 //        Сколько существует таких маршрутов в сетке 20×20 (21x21)?
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,12 +22,12 @@ public class Main {
         //корректный ответ - 137846528820
         //не соответствует - нужно переделать. на небольших матрицах работает гуд, с большими все плохо...
 
-        System.out.println("Result: " + getAmountOfPaths(21, 21) + " paths");
+        System.out.println("Result: " + getAmountOfPaths(3, 3) + " paths");
 
         System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    private static int getAmountOfPaths(int cols, int rows) {
+    private static long getAmountOfPaths(int cols, int rows) {
         HashSet<String> hs = new HashSet<>();
         int cursorX;
         int cursorY;
@@ -43,13 +44,14 @@ public class Main {
         timer.schedule(task, 60000);
 
         int iterationsAmount = cols * rows * cols * rows * (cols + rows) / 2;
+        Random random = new Random();
 
         for (int i = 0; i < iterationsAmount && hasTime[0]; i++) {
             cursorX = 1;
             cursorY = 1;
             path = "path = ";
             while (cursorX < cols || cursorY < rows) {
-                if (Math.random() > 0.5) {
+                if (random.nextBoolean()) {
                     if (cursorX < cols) { //есть еще место справа?
                         cursorX += 1; //идем направо
                     } else { //места нет, идем до упора вниз

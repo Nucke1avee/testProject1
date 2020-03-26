@@ -18,9 +18,13 @@ public class TestField {
         long startTime = System.currentTimeMillis();
 
 
-        for (int i = 0; i < 100; i++) {
-            System.out.println(Math.random() > 0.5);
-        }
+
+        String formatString = "We are printing double variable %f, string %s and integer variable %d.";
+        System.out.println(String.format(formatString, 2.3, "habr", 10));
+
+        String ufo = "НЛО";
+        System.out.println(String.format(("ОЛОЛО, %s, я водитель %s!!!%d"), "ололо", ufo, 111));
+
 
 
         long timeSpent = System.currentTimeMillis() - startTime;

@@ -6,7 +6,6 @@ public class TimeSpent {
 
         //your code
 
-        long timeSpent = System.currentTimeMillis() - startTime;
-        System.out.println("\nExecution time: " + timeSpent + " ms");
+        System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
     }
 }
