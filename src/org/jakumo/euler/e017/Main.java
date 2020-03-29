@@ -117,7 +117,6 @@ public class Main {
                 num = "thousand";
                 break;
         }
-
         return 0;
     }
 }
