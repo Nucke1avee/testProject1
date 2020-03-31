@@ -8,22 +8,22 @@ package org.jakumo.euler.e017;
 
 public class Main {
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-
-        System.out.println("Result: " + getAmountOfLetters(1));
-
-        System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
+        //Кривенько, косенько, но задачу решает и вполне себе шустро (ну и в кой-то веке рекурсия пригодилась) =)
+        //Execution time = 60ms
+        System.out.println("Result: " + getAmountOfAllLettersTo(1000)); //максимальное число = 9999, что не есть гуд...
     }
 
-    private static int getAmountOfLetters(int i) {
+    private static int getAmountOfAllLettersTo(int i) {
         int lettersAmount = 0;
-
-
+        for (int j = 1; j <= i; j++) {
+            lettersAmount += dict(j).replaceAll("[ -]", "").length(); //удаляем все пробелы и тире
+        }
         return lettersAmount;
     }
 
-    private int dic(int i) {
+    private static String dict(int i) {
         String num = "";
+        String[] numSplit;
 
         switch (i) {
             case 0:
@@ -110,13 +110,30 @@ public class Main {
             case 90:
                 num = "ninety";
                 break;
-            case 100:
-                num = "hundred";
-                break;
-            case 1000:
-                num = "thousand";
-                break;
+            default:  //нет в списке? тогда мы идем к... ээ... разбиваем, крч, на отдельные части
+                numSplit = String.valueOf(i).split(""); //хотя не уверен что нельзя было проще сделать
+                switch (numSplit.length) {
+                    case 2:  //десятки
+                        num = dict(Integer.parseInt(numSplit[0]) * 10) + "-" + dict(i % 10);
+                        break;
+                    case 3:  //сотни
+                        //если нет десятков и на конце ноль
+                        if (Integer.parseInt(numSplit[2]) == 0 && Integer.parseInt(numSplit[1]) == 0) {
+                            num = dict(Integer.parseInt(numSplit[0])) + " hundred";
+                        } else {
+                            num = dict(Integer.parseInt(numSplit[0])) + " hundred and " + dict(i % 100);
+                        }
+                        break;
+                    case 4:  //тысячи
+                        //если нет сотен, десятков и на конце ноль
+                        if (Integer.parseInt(numSplit[3]) == 0 && Integer.parseInt(numSplit[2]) == 0 && Integer.parseInt(numSplit[1]) == 0) {
+                            num = dict(Integer.parseInt(numSplit[0])) + " thousand";
+                        } else {
+                            num = dict(Integer.parseInt(numSplit[0])) + " thousand " + dict(i % 1000);
+                        }
+                        break;
+                }
         }
-        return 0;
+        return num;
     }
 }
