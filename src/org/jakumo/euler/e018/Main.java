@@ -48,51 +48,56 @@ public class Main {
     }
 
     private static int getMaxSum(String filepath) {
-        makeArrayFromFile(filepath, " ");
+        int triangleHeight = makeArrayFromFile (filepath, " ");
 
-
+        //TODO: сделать логику сравнения
+        System.out.println("sum = " + triangleSumFrom(14, 14, triangleHeight));
 
         return 0;
     }
 
     private static int[][] array;
-
-    private static void makeArrayFromFile(String filepath, String splitRegex) {
+    //инициализирует массив (треугольник) и возвращает его высоту
+    private static int makeArrayFromFile(String filepath, String splitRegex) {
+        int linesAmount = 0;
+        String[] line;
         try {
             File file = new File(filepath);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String[] line;
-            int lines = 0;
 
             bufferedReader.mark((int) file.length() + 1);
             while (bufferedReader.ready()) {
                 bufferedReader.readLine();
-                lines++;
+                linesAmount++;
             }
-            array = new int[lines][];
-            for (int i = 0; i < lines; i++) {
+            array = new int[linesAmount][];
+            for (int i = 0; i < linesAmount; i++) {
                 array[i] = new int[i + 1];
             }
-            lines = 0;
+            linesAmount = 0;
             bufferedReader.reset();
             while (bufferedReader.ready()) {
                 line = bufferedReader.readLine().split(splitRegex);
                 for (int i = 0; i < line.length; i++) {
-                    array[lines][i] = Integer.parseInt(line[i]);
+                    array[linesAmount][i] = Integer.parseInt(line[i]);
                 }
-                lines++;
+                linesAmount++;
             }
             bufferedReader.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        return linesAmount;
     }
 
-    private static int triangleSumFrom(int line, int pos) {
+    //сумма всех чисел треугольника от полученной позиции числа и до упора вниз
+    private static int triangleSumFrom(int startLineNumber, int startPosition, int triangleHeight) {
         int sum = 0;
-
-
-
+        for (int i = startLineNumber, k = 0; i < triangleHeight; i++, k++) {
+            for (int j = startPosition; j <= startPosition + k; j++) {
+                sum += array[i][j];
+            }
+        }
         return sum;
     }
 }
