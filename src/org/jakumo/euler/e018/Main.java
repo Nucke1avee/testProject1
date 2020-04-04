@@ -39,41 +39,22 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-        //Execution time =
+        //Execution time = 40ms
+        //Answer = 1074
         String path = "./src/org/jakumo/euler/e018/triangle.txt";
         System.out.println("Result: " + getMaxSum(path));
-
-        System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
     private static int getMaxSum(String filepath) {
         int triangleHeight = makeArrayFromFile (filepath, " ");
-        int line = 0, position = 0, maxSum = array[line][position];
+        int[][] arrayCopy = array;
 
-        //System.out.println("sum = " + triangleSumFrom(0, 0, triangleHeight));
-
-        for (int i = 0; i < triangleHeight - 1; i++) {
-            System.out.println("max1 = " + maxSum);
-
-            line++;
-            int forIf = triangleSumFrom(line, position, triangleHeight);
-            int forElse = triangleSumFrom(line, (position + 1), triangleHeight);
-
-            System.out.println("if sum: " + forIf);
-            System.out.println("else sum: " + forElse);
-
-            if (forIf > forElse) {
-                maxSum += array[line][position];
-                System.out.println("_IF " + array[line][position]);
-            } else {
-                position++;
-                maxSum += array[line][position];
-                System.out.println("_ELSE " + array[line][position]);
+        for (int i = triangleHeight - 2; i >= 0 ; i--) {
+            for (int j = 0; j < arrayCopy[i].length; j++) {
+                arrayCopy[i][j] += Math.max(arrayCopy[i + 1][j], arrayCopy[i + 1][j + 1]);
             }
-            System.out.println("max2 = " + maxSum + "\n");
         }
-        return maxSum;
+        return arrayCopy[0][0];
     }
 
     private static int[][] array;
@@ -105,17 +86,8 @@ public class Main {
             }
             bufferedReader.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return linesAmount;
-    }
-
-    //сумма всех чисел треугольника от полученной позиции числа и до упора вниз
-    private static int triangleSumFrom(int startLineNumber, int startPosition, int triangleHeight) {
-        int sum = 0;
-        for (int i = startLineNumber, k = 0; i < triangleHeight; i++, k++) {
-            for (int j = startPosition; j <= startPosition + k; j++) sum += array[i][j];
-        }
-        return sum;
     }
 }
