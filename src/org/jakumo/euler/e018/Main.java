@@ -48,7 +48,6 @@ public class Main {
     private static int getMaxSum(String filepath) {
         int triangleHeight = makeArrayFromFile (filepath, " ");
         int[][] arrayCopy = array;
-
         for (int i = triangleHeight - 2; i >= 0 ; i--) {
             for (int j = 0; j < arrayCopy[i].length; j++) {
                 arrayCopy[i][j] += Math.max(arrayCopy[i + 1][j], arrayCopy[i + 1][j + 1]);
