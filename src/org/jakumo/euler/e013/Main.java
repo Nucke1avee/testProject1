@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws Throwable {
         //Execution time = 9ms
+        //Answer = 5537376230
         String path = "./src/org/jakumo/euler/e013/littleNumbers.txt";
         System.out.println(
                 getBigSumFromArrayList(getBigIntegerArrayListFromFile(path))

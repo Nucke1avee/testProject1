@@ -4,7 +4,8 @@ package org.jakumo.euler.e002;
         Найдите сумму всех четных элементов ряда Фибоначчи, которые не превышают четыре миллиона.*/
 public class Main {
     public static void main(String[] args) {
-        //execution time ~20ms
+        //Execution time ~20ms
+        //Answer = 4613732
         int[] a = {1, 2, 3};
         int sum = 0;
         for (int i = 0; a[i % 3] < 4000000; i++) {

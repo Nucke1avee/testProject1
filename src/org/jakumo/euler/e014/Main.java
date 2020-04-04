@@ -17,6 +17,7 @@ package org.jakumo.euler.e014;
 public class Main {
     public static void main(String[] args) {
         //Execution time = 650ms
+        //Answer =
         System.out.println("Result: " + getMaxStaringNum(1000000));
     }
 

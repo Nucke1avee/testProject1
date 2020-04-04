@@ -34,7 +34,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //execTime ~ 78ms
+        //Execution time ~ 78ms
+        //Answer = 70600674
         String path = "./src/org/jakumo/euler/e011/array.txt";
         int[][] array = getMatrixFromFile(path, " ");
         System.out.println("\nResult = " + getMaxMultiplicationFromArray(array, 4));

@@ -7,7 +7,8 @@ package org.jakumo.euler.e006;
   Найдите разность между суммой квадратов и квадратом суммы первых ста натуральных чисел.*/
 public class Main {
     public static void main(String[] args) {
-        //execution time ~20ms
+        //Execution time ~20ms
+        //Answer = 25164150
         int sk = 0, ks = 0, n = 100;
         for (int i = 1; i <= n; i++) {
             sk += i * i;

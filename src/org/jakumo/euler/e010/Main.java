@@ -5,7 +5,8 @@ import useful.PrimeCheck;
 //Найдите сумму всех простых чисел меньше двух миллионов.
 public class Main {
     public static void main(String[] args) {
-        //execution time ~ 820ms
+        //Execution time ~ 820ms
+        //Answer = 142913828922
         long sum = 0;
         for (int i = 1; i <= 2000000; i++)
             if (PrimeCheck.isPrime(i)) sum += i;

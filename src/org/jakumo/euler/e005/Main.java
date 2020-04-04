@@ -3,7 +3,8 @@ package org.jakumo.euler.e005;
 Какое самое маленькое число делится нацело на все числа от 1 до 20?*/
 public class Main {
     public static void main(String[] args) {
-        //execution time ~25ms
+        //Execution time ~25ms
+        //Answer = 232792560
         int to = 20;
         int nok = 1;
         for (int i = 2; i <= to; i++) {

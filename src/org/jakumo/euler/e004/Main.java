@@ -4,7 +4,8 @@ package org.jakumo.euler.e004;
       Найдите самый большой палиндром, полученный умножением двух трехзначных чисел.*/
 public class Main {
     public static void main(String[] args) {
-        //execution time ~35ms
+        //Execution time ~35ms
+        //Answer = 906609
         boolean isFound = false;
         int result = 0;
         for (int i = 999; i >= 100 || !isFound; i--) {

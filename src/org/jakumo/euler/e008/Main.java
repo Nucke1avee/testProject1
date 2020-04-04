@@ -28,7 +28,8 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws IOException { //лучше убрать, и сделать нормальный try/catch
-        //execution time ~30ms
+        //Execution time ~30ms
+        //Answer = 23514624000
         int amount = 13; //произведение скольких чисел нас интересует
         //получаем массив чисел из файла
         String fileName = "./src/org/jakumo/euler/e008/num.txt";
