@@ -3,29 +3,29 @@ package org.jakumo.euler.e018;
 //        Начиная в вершине треугольника (см. пример ниже) и перемещаясь вниз на
 //        смежные числа, максимальная сумма до основания составляет 23.
 //
-//        3
-//        7 4
-//        2 4 6
+//           3
+//          7 4
+//         2 4 6
 //        8 5 9 3
 //
 //        То есть, 3 + 7 + 4 + 9 = 23.
 //
 //        Найдите максимальную сумму пути от вершины до основания следующего треугольника:
 //
-//        75
-//        95 64
-//        17 47 82
-//        18 35 87 10
-//        20 04 82 47 65
-//        19 01 23 75 03 34
-//        88 02 77 73 07 63 67
-//        99 65 04 28 06 16 70 92
-//        41 41 26 56 83 40 80 70 33
-//        41 48 72 33 47 32 37 16 94 29
-//        53 71 44 65 25 43 91 52 97 51 14
-//        70 11 33 28 77 73 17 78 39 68 17 57
-//        91 71 52 38 17 14 91 43 58 50 27 29 48
-//        63 66 04 68 89 53 67 30 73 16 69 87 40 31
+//                      75
+//                     95 64
+//                    17 47 82
+//                   18 35 87 10
+//                  20 04 82 47 65
+//                 19 01 23 75 03 34
+//                88 02 77 73 07 63 67
+//               99 65 04 28 06 16 70 92
+//              41 41 26 56 83 40 80 70 33
+//             41 48 72 33 47 32 37 16 94 29
+//            53 71 44 65 25 43 91 52 97 51 14
+//           70 11 33 28 77 73 17 78 39 68 17 57
+//          91 71 52 38 17 14 91 43 58 50 27 29 48
+//         63 66 04 68 89 53 67 30 73 16 69 87 40 31
 //        04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 //
 //        Примечание: Так как в данном треугольнике всего 16384 возможных маршрута от вершины до основания,
@@ -49,11 +49,31 @@ public class Main {
 
     private static int getMaxSum(String filepath) {
         int triangleHeight = makeArrayFromFile (filepath, " ");
+        int line = 0, position = 0, maxSum = array[line][position];
 
-        //TODO: сделать логику сравнения
-        System.out.println("sum = " + triangleSumFrom(14, 14, triangleHeight));
+        //System.out.println("sum = " + triangleSumFrom(0, 0, triangleHeight));
 
-        return 0;
+        for (int i = 0; i < triangleHeight - 1; i++) {
+            System.out.println("max1 = " + maxSum);
+
+            line++;
+            int forIf = triangleSumFrom(line, position, triangleHeight);
+            int forElse = triangleSumFrom(line, (position + 1), triangleHeight);
+
+            System.out.println("if sum: " + forIf);
+            System.out.println("else sum: " + forElse);
+
+            if (forIf > forElse) {
+                maxSum += array[line][position];
+                System.out.println("_IF " + array[line][position]);
+            } else {
+                position++;
+                maxSum += array[line][position];
+                System.out.println("_ELSE " + array[line][position]);
+            }
+            System.out.println("max2 = " + maxSum + "\n");
+        }
+        return maxSum;
     }
 
     private static int[][] array;
@@ -94,9 +114,7 @@ public class Main {
     private static int triangleSumFrom(int startLineNumber, int startPosition, int triangleHeight) {
         int sum = 0;
         for (int i = startLineNumber, k = 0; i < triangleHeight; i++, k++) {
-            for (int j = startPosition; j <= startPosition + k; j++) {
-                sum += array[i][j];
-            }
+            for (int j = startPosition; j <= startPosition + k; j++) sum += array[i][j];
         }
         return sum;
     }
