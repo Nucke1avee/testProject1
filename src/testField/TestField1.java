@@ -19,13 +19,13 @@ public class TestField1 {
 
         reader = new BufferedReader(new FileReader(in));
         while (reader.ready()) {
-            s = reader.readLine().replaceAll("[a-zA-Z]", "");
-            tmp = s.split(" ");
+            s = reader.readLine().replaceAll("[a-zA-Z]", ""); //читаем строку и убираем из нее все буквы
+            tmp = s.split(" "); //разбиваем по пробелу и пишем во временный массив
 
-            for (String str : tmp) {
+            for (String str : tmp) {  //идем по временному массиву и пытаемся превратить значение элемента массива в инт
                 try {
-                    list.add(Integer.parseInt(str));
-                } catch (Throwable ignore) {}
+                    list.add(Integer.parseInt(str));  //если получилось - добавили в лист
+                } catch (Throwable ignore) {}  //не получилось? ну и хрен с ним, берем следующий элемент
             }
         }
         reader.close();
