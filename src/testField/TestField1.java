@@ -2,6 +2,7 @@ package testField;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class TestField1 {
@@ -11,17 +12,16 @@ public class TestField1 {
 
 
     public static void readFileAndWriteAnswerInNewFile(String in, String out) throws IOException {
-        BufferedReader reader;
+        BufferedReader reader = new BufferedReader(new FileReader(in));
         String s = "";
         String[] tmp;
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        reader = new BufferedReader(new FileReader(in));
         while (reader.ready()) {
-            s = reader.readLine().replaceAll("[a-zA-Z]", ""); //читаем строку и убираем из нее все буквы
+            s = reader.readLine().replaceAll("[a-zA-Z]", "").replaceAll("\\s{2,}", " "); //читаем строку и убираем из нее все буквы и лишние пробелы
             tmp = s.split(" "); //разбиваем по пробелу и пишем во временный массив
-
+            System.out.println("array = "+ Arrays.toString(tmp));
             for (String str : tmp) {  //идем по временному массиву и пытаемся превратить значение элемента массива в инт
                 try {
                     list.add(Integer.parseInt(str));  //если получилось - добавили в лист
