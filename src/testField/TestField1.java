@@ -18,8 +18,9 @@ public class TestField1 {
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        while (reader.ready()) {
-            s = reader.readLine().replaceAll("[a-zA-Z]", "").replaceAll("\\s{2,}", " "); //читаем строку и убираем из нее все буквы и лишние пробелы
+        while (reader.ready()) {                                         // V тут пробел нада =)
+            s = reader.readLine().replaceAll("[a-zA-Z]", " ").replaceAll("\\s{2,}", " "); //читаем строку и убираем из нее все буквы и лишние пробелы
+            System.out.println("s = " + s);
             tmp = s.split(" "); //разбиваем по пробелу и пишем во временный массив
             for (String str : tmp) {  //идем по временному массиву и пытаемся превратить значение элемента массива в инт
                 try {
