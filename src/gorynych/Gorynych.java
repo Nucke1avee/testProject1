@@ -12,6 +12,7 @@ public class Gorynych {
     public static void main(String[] args) {
         //Execution time: 11 ms
         System.out.println("Result: " + getMinutes(3));
+        //Result: 20
     }
 
     private static int getMinutes(int timeAllHours) {
