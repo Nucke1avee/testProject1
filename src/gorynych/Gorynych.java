@@ -21,7 +21,7 @@ public class Gorynych {
 
         String[] headFirst = {"forward", "back", "left", "right"};
         String[] headSecond = {"back", "left", "right"};
-        String[] headThird = {"left", "right", "forward"};
+        String[] headThird = {"right", "left", "forward"};
         int turnTimeFH = 10;
         int turnTimeSH = 15;
         int turnTimeTH = 20;
