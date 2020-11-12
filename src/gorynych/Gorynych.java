@@ -11,9 +11,7 @@ package gorynych;
 public class Gorynych {
     public static void main(String[] args) {
         //Execution time: 11 ms
-        long startTime = System.currentTimeMillis();
         System.out.println("Result: " + getMinutes(3));
-        System.out.println("\nExecution time: " + (System.currentTimeMillis() - startTime) + " ms");
         //Result: 15
     }
 
