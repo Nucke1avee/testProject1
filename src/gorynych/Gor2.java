@@ -2,9 +2,6 @@ package gorynych;
 
 public class Gor2 {
     public static void main(String[] args) {
-
-
-
         int totalTime = 0;
         int firstHead = 0;
         int secondHead = 0;
@@ -14,7 +11,7 @@ public class Gor2 {
         String[] secondHeadsLooks = {"down", "left", "right"};
         String[] thirdHeadsLooks = {"right", "left", "up"};
 
-        for (int time = 0; time <= 180 ; time++) {
+        for (int time = 0; time < 180 ; time++) {
             //передаем в метод (функцию) текущее значение time, длину интересующего нас массива, значение локальной
             //переменной firstHead и время, за которое голова делает поворот, перевариваем все это в функции counter
             //и сохраняем результат обратно же в нашу переменную firstHead
@@ -47,7 +44,4 @@ public class Gor2 {
         return _head;
     }
     //стоило оно того?.. =)
-
-
-
 }

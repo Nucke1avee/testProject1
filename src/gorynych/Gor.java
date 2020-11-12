@@ -2,9 +2,6 @@ package gorynych;
 
 public class Gor {
     public static void main(String[] args) {
-
-
-
         int totalTime = 0;
         int firstHead = 0;
         int secondHead = 0;
@@ -14,8 +11,6 @@ public class Gor {
         String[] secondHeadsLooks = {"down", "left", "right"};
         String[] thirdHeadsLooks = {"right", "left", "up"};
 
-        //если я правильно понял, то у тебя время начинается с 1й минуты? Т.е. промежуток [1; 180]
-        //а промежуток [0; 1]? если б они в начале смотрели бы в одну сторону, то ты не досчитался бы 1й минуты...
         for (int time = 1; time <= 180 ; time++) {
             if (time % 10 == 0) {
                 firstHead += 1;
@@ -44,21 +39,11 @@ public class Gor {
 
             if (firstHeadLookingNow == secondHeadLookingNow
                     && firstHeadLookingNow == thirdHeadLookingNow
-                    //зачем 3я проверка? есть a, b, c. если а = b и a = c, то уже понятно что и b = c
                     && secondHeadLookingNow == thirdHeadLookingNow) {
 
                 totalTime += 1;
             }
         }
         System.out.println("Total time equals: " + totalTime + " minutes");
-
-
-
-
-
-
-
-
-
     }
 }
